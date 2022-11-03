@@ -1,0 +1,10 @@
+<center><h1> WELCOME BROS & BROSETTES ! </h1></center></br>
+
+<center><%= link_to "Clic here to create your damn gossip bro", new_gossip_path %></br></br></center>
+
+
+<% @gossips.each do |x| %>
+<p> Name: <%= x.user.first_name %><br>
+    Title: <%= x.title %><br>
+<a href="/gossips/<%=x.id%>" >Voir le gossip</a></p>
+<% end %>

@@ -1,0 +1,11 @@
+<h1>Bienvenue sur la page de création d'un commentaire sur le gossip <%= params[:gossip_id] %> !</h1><br>    
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+  <%= label_tag 'Commentaire:' %>
+  <%= text_field_tag 'content' %>
+  <br/> <br/>
+
+  <%= submit_tag "Envoyer le formulaire" %>
+
+<% end %>

@@ -1,0 +1,14 @@
+<div class="card create-gossip">
+  <div class="card-header">
+    <h2>Editing gossip</h2>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <%= form_for(@gossip) do |f| %>
+          <%= f.text_field :title, class: 'form-control' %>
+          <%= f.text_area :content, class: 'form-control' %>
+          <%= f.submit %>
+      <% end %>
+    </blockquote>
+  </div>
+</div>

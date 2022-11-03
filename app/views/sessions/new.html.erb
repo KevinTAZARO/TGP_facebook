@@ -1,0 +1,14 @@
+<h1>Login page</h1><br>
+
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+<%= label_tag 'Email:' %><br>
+<%= text_field_tag 'email' %><br><br>
+
+<%= label_tag 'Password:' %><br>
+<%= text_field_tag 'password' %><br><br>
+
+ <%= submit_tag "Log in bruh !" %>
+
+<% end %>

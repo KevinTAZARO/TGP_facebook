@@ -1,0 +1,7 @@
+<% @gossips.each do |g| %>
+<% if g.user.city_id == @city.id  %>
+  <p> Title : <%= g.title %></p>
+  <p> Content : <%= g.content %></p>
+  <% end %>
+<% end %>
+

@@ -1,0 +1,23 @@
+<p> Name: <a href="/users/<%= @gossips.user.id %>"><%= @gossips.user.first_name %></a></p>
+<p> Title: <%= @gossips.title %></p>
+<p> Content: <%= @gossips.content %></p>
+<p> Created: <%= @gossips.created_at %></p>
+<p> Updated: <a href="/gossips/<%= @gossips.id %>/edit"><%= @gossips.updated_at %></p>
+<p> Writted at: <a href="/cities/<%= @gossips.user.city.id%>"><%= @gossips.user.city.name %></p>
+
+<p><%= button_to "Delete gossip", gossip_path(@gossips), :method => "delete" %><br>
+
+<p><%= button_to "Écrire un commentaire", new_gossip_comment_path(@gossips.id), :method => "get" %>
+
+
+<% @gossips.comments.sort.each do |comment| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= comment.content %></h5>
+      <p> Écrit par: <%= link_to "#{comment.user.first_name}", user_path(comment.user.id) %></p>
+
+          <%= button_to "Modifier ou supprimer ce commentaire", edit_gossip_comment_path(@gossips.id, comment.id), :method => "get" %>
+
+    </div>
+  </div>
+<% end %>

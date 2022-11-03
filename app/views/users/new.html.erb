@@ -1,0 +1,29 @@
+<h1>Bienvenue sur la page de création d'un utilisateur !</h1><br>
+
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+<%= label_tag 'Firstname:' %><br>
+<%= text_field_tag 'first_name' %><br><br>
+
+<%= label_tag 'Lastname:' %><br>
+<%= text_field_tag 'last_name' %><br><br>
+
+<%= label_tag 'Email:' %><br>
+<%= text_field_tag 'email' %><br><br>
+
+<%= label_tag 'Password:' %><br>
+<%= text_field_tag 'password' %><br><br>
+
+<%= label_tag 'Password_Confirmation:' %><br>
+<%= text_field_tag 'password_conf' %><br><br>
+
+<%= label_tag 'Age:' %><br>
+<%= text_field_tag 'age' %><br><br>
+
+
+<%= label_tag 'Description:' %><br>
+<%= text_field_tag 'description' %><br><br>
+
+ <%= submit_tag "Sign Up !" %>
+
+<% end %>

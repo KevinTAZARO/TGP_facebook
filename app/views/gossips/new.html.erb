@@ -1,0 +1,16 @@
+  <div class="card-header">
+    <h2>Setting up the gossip</h2><hr>
+  </div>
+
+      <%= form_tag url_for(action: 'create'), method: "post" do %>
+      <font size="+2">  <%= label_tag 'Gossip title' %></font><br/>
+        <%= text_field_tag 'title' %>
+        <br /> <br />
+
+      <font size="+2">  <%= label_tag 'Gossip description' %></font><br/>
+        <%= text_area_tag 'content' %>
+        <br /> <br />
+
+        <%= submit_tag "Submit your gossip" %>
+
+      <% end %>
