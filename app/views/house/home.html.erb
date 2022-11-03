@@ -6,5 +6,8 @@
 <% @gossips.each do |x| %>
 <p> Name: <%= x.user.first_name %><br>
     Title: <%= x.title %><br>
+
+<%if session[:user_id]%>
 <a href="/gossips/<%=x.id%>" >Voir le gossip</a></p>
+<% end %>
 <% end %>

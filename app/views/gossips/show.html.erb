@@ -2,22 +2,29 @@
 <p> Title: <%= @gossips.title %></p>
 <p> Content: <%= @gossips.content %></p>
 <p> Created: <%= @gossips.created_at %></p>
+
+<% if session[:user_id] == @gossips.user_id %>
 <p> Updated: <a href="/gossips/<%= @gossips.id %>/edit"><%= @gossips.updated_at %></p>
+<% end %>
+
 <p> Writted at: <a href="/cities/<%= @gossips.user.city.id%>"><%= @gossips.user.city.name %></p>
 
+<% if session[:user_id] == @gossips.user_id %>
 <p><%= button_to "Delete gossip", gossip_path(@gossips), :method => "delete" %><br>
 
-<p><%= button_to "Écrire un commentaire", new_gossip_comment_path(@gossips.id), :method => "get" %>
+<p><%= button_to "Écrire un commentaire", new_gossip_comment_path(@gossips.id), :method => "get" %><br>
+<% end %>
 
-
-<% @gossips.comments.sort.each do |comment| %>
+<% @gossips.comments.each do |comment| %>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title"><%= comment.content %></h5>
-      <p> Écrit par: <%= link_to "#{comment.user.first_name}", user_path(comment.user.id) %></p>
+      <p class="card-title"><%= comment.content %></p>
+      <p> Écrit par: <%= "#{comment.user.first_name}"%></p>
 
+
+<% if session[:user_id] == comment.user.id %>
           <%= button_to "Modifier ou supprimer ce commentaire", edit_gossip_comment_path(@gossips.id, comment.id), :method => "get" %>
-
+<% end %>
     </div>
   </div>
 <% end %>

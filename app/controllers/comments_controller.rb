@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
 
-  # before_action :logged_in_user
+  before_action :authenticate_user, only: [:new, :create, :show]
 
   def new
     @comment = Comment.new
   end
 
   def create
-    @comment = Comment.new(content: params[:content], user_id: User.all.sample.id, gossip_id: params[:gossip_id]) # avec xxx qui sont les données obtenues à partir du formulaire
+    @comment = Comment.new(content: params[:content], user_id: session[:user_id], gossip_id: params[:gossip_id]) # avec xxx qui sont les données obtenues à partir du formulaire
 
     if @comment.save # essaie de sauvegarder en base @gossip
       # si ça marche, il redirige vers la page d'index du site
@@ -45,4 +45,11 @@ private
 
 def comment_params
   params.require(:comment).permit(:content, :gossip_id,  :comment_id)
+end
+
+def authenticate_user
+  unless session[:user_id]
+    flash[:danger] = "Log in please"
+    redirect_to new_session_path
+  end
 end
